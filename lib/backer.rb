@@ -1,8 +1,15 @@
 class Backer
-bob = Backer.new("Bob")
-awesome_project = Project.new("This is an Awesome Project")
+  attr_accessor :name, :backed_projects
 
-bob.back_project(awesome_project)
+  def initialize(name)
+    @name = name
+    @backed_projects = []
+  end
 
-bob.backed_projects
-end
+  def back_project(project)
+    @backed_projects << project
+    project.backers << self
+
+  end
+
+end 
